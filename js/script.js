@@ -85,10 +85,10 @@ for (let i = 0; i < dipendenti.length; i++) {
     let col = crateCol();
     let count = 1
     for (let key in dipendenti[i]) {
-        console.log(dipendenti[i][key]);
         let val = dipendenti[i][key];
-        printValori(val,col,count);
         console.log(count);
+        console.log(val);
+        printValori(val,col,count);
         count++;
         
     }
