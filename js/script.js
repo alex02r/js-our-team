@@ -10,14 +10,36 @@ function crateCol() {
 
     col.appendChild(card);
     row.appendChild(col);
-    return col;
+    return card;
 }
 //funzione per scrivere nle DOM
 function printValori(valore, elemento, contatore) {
-    
-    //creazione dell' immagine
-    if(contatore == 3){
+    const body = document.createElement('div');
+    body.classList.add('card-body');
 
+    switch (contatore) {
+        case "1":
+            //dobbiamo inserire il titolo
+            let title = document.createElement('h5');
+            title.classList.add('card-title');
+            title.innerText;
+            body.appendChild(title);
+            break;
+        case "2":
+            //dobbiamo inserire il sottotitolo
+            let subtitle = document.createElement('p');
+            title.classList.add('card-text');
+            title.innerText;
+            body.appendChild(subtitle);
+            break;
+        case "3":
+            //dobbimao inserire l'immagine
+            let img = `<img src="./img/${valore}" class="card-img-top" src="dipendente">`;
+            elemento.innerHTML= img;
+            break;
+    
+        default:
+            break;
     }
 }
 
@@ -59,9 +81,9 @@ for (let i = 0; i < dipendenti.length; i++) {
     let col = crateCol();
     let count = 1
     for (let key in dipendenti[i]) {
-        count++;
         console.log(dipendenti[i][key]);
         let val = dipendenti[i][key];
         printValori(val,col,count);
+        count++;
     }
 }
