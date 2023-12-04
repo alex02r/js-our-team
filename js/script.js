@@ -43,6 +43,7 @@ function crateCol() {
 }
  */
 function createCard(object) {
+    console.log(object.name);
     const row = document.getElementById('row-card');
     //colonna
     let col = document.createElement('div');
@@ -54,37 +55,21 @@ function createCard(object) {
     let card_body = document.createElement('div');
     card_body.classList.add('card-body');
     
-    let count = 1;
-    for (const key in object) {
+    //dobbiamo inserire il titolo
+    let title = document.createElement('h5');
+    title.classList.add('card-title');
+    title.innerText = object.name;
+    card_body.appendChild(title);
 
-        switch (count) {
-            case 1:
-                //dobbiamo inserire il titolo
-                let title = document.createElement('h5');
-                title.classList.add('card-title');
-                title.innerText = object[key];
-                card_body.appendChild(title);
-                break;
-            case 2:
-                //dobbiamo inserire il sottotitolo
-                let subtitle = document.createElement('p');
-                subtitle.classList.add('card-text');
-                subtitle.innerText = object[key];
-                console.log(subtitle.innerText);
-                card_body.appendChild(subtitle);
-                break;
-            case 3:
-                //dobbimao inserire l'immagine
-                let img = `<img src="./img/${object[key]}" class="card-img-top" alt="dipendente">`;
-                card.innerHTML+= img;
-                console.log(count);
-                break;
-        
-            default:
-                break;
-        }
-        count++;
-    }
+    //dobbiamo inserire il sottotitolo
+    let subtitle = document.createElement('p');
+    subtitle.classList.add('card-text');
+    subtitle.innerText = object.role;
+    card_body.appendChild(subtitle);
+
+    //dobbimao inserire l'immagine
+    let img = `<img src="./img/${object.image}" class="card-img-top" alt="dipendente">`;
+    card.innerHTML+= img;
     
     card.appendChild(card_body);
     col.appendChild(card);
