@@ -1,3 +1,17 @@
+//funzione che crea una lista iin html
+function crateUl() {
+    let ul = document.createElement('ul');
+    let text = document.getElementById('text');
+    text.appendChild(ul);
+    return ul;
+}
+//funzione per scrivere nle DOM
+function printValori(valore, elemento) {
+    let li = document.createElement('li');
+    li.innerText= valore;
+    elemento.appendChild(li);
+}
+
 //MILESTONE 0
 let dipendenti = [
     {
@@ -33,7 +47,10 @@ let dipendenti = [
 ];
 //MILESTONE 1 :
 for (let i = 0; i < dipendenti.length; i++) {
+    let ul = crateUl();
     for (let key in dipendenti[i]) {
         console.log(dipendenti[i][key]);
+        let val = dipendenti[i][key];
+        printValori(val,ul);
     }
 }
