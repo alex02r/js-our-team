@@ -1,6 +1,6 @@
 //funzione che crea una lista iin html
 function crateCol() {
-    const row = document.getElementById('row');
+    const row = document.getElementById('row-card');
     //creazione colonna
     let col = document.createElement('div');
     col.classList.add('col-4');
@@ -18,29 +18,33 @@ function printValori(valore, elemento, contatore) {
     body.classList.add('card-body');
 
     switch (contatore) {
-        case "1":
+        case 1:
             //dobbiamo inserire il titolo
             let title = document.createElement('h5');
             title.classList.add('card-title');
-            title.innerText;
+            title.innerText = valore;
             body.appendChild(title);
+
             break;
-        case "2":
+        case 2:
             //dobbiamo inserire il sottotitolo
             let subtitle = document.createElement('p');
-            title.classList.add('card-text');
-            title.innerText;
+            subtitle.classList.add('card-text');
+            subtitle.innerText = valore;
+            console.log(subtitle.innerText);
             body.appendChild(subtitle);
+
             break;
-        case "3":
+        case 3:
             //dobbimao inserire l'immagine
-            let img = `<img src="./img/${valore}" class="card-img-top" src="dipendente">`;
+            let img = `<img src="./img/${valore}" class="card-img-top" alt="dipendente">`;
             elemento.innerHTML= img;
             break;
     
         default:
             break;
     }
+    elemento.appendChild(body);
 }
 
 //MILESTONE 0
@@ -84,6 +88,8 @@ for (let i = 0; i < dipendenti.length; i++) {
         console.log(dipendenti[i][key]);
         let val = dipendenti[i][key];
         printValori(val,col,count);
+        console.log(count);
         count++;
+        
     }
 }
