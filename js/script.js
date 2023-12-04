@@ -30,4 +30,10 @@ let dipendenti = [
         role: "Graphic Designer",
         image: "barbara-ramos-graphic-designer.jpg"
     }
-]
+];
+//MILESTONE 1 :
+for (let i = 0; i < dipendenti.length; i++) {
+    for (let key in dipendenti[i]) {
+        console.log(dipendenti[i][key]);
+    }
+}
