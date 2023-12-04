@@ -1,20 +1,24 @@
 //funzione che crea una lista iin html
 function crateCol() {
     const row = document.getElementById('row');
+    //creazione colonna
     let col = document.createElement('div');
-    col.classList.add('col-4')
-    
+    col.classList.add('col-4');
+    //creazione di card
+    let card = document.createElement('div');
+    card.classList.add('card');
+
+    col.appendChild(card);
     row.appendChild(col);
     return col;
 }
 //funzione per scrivere nle DOM
-function printValori(valore, elemento) {
-    //creazione di card
-    let card = document.createElement('div');
-    card.classList.add('card');
-    elemento.appendChild(card);
+function printValori(valore, elemento, contatore) {
+    
     //creazione dell' immagine
+    if(contatore == 3){
 
+    }
 }
 
 //MILESTONE 0
@@ -53,7 +57,7 @@ let dipendenti = [
 //MILESTONE 1 :
 for (let i = 0; i < dipendenti.length; i++) {
     let col = crateCol();
-    let count = 0
+    let count = 1
     for (let key in dipendenti[i]) {
         count++;
         console.log(dipendenti[i][key]);
