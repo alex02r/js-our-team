@@ -1,19 +1,13 @@
 //funzione che crea una lista iin html
+/*
 function crateCol() {
     const row = document.getElementById('row-card');
-    //creazione colonna
-    let col = document.createElement('div');
-    col.classList.add('col-4');
-    //creazione di card
-    let card = document.createElement('div');
-    card.classList.add('card');
-
-    col.appendChild(card);
-    row.appendChild(col);
+    
     return card;
 }
+*/
 //funzione per scrivere nle DOM
-function printValori(valore, elemento, contatore) {
+/* function printValori(valore, elemento, contatore) {
     const body = document.createElement('div');
     body.classList.add('card-body');
 
@@ -33,6 +27,7 @@ function printValori(valore, elemento, contatore) {
             subtitle.innerText = valore;
             console.log(subtitle.innerText);
             body.appendChild(subtitle);
+            body.innerHTML = `<p class="card-text"> </p>`
 
             break;
         case 3:
@@ -46,7 +41,55 @@ function printValori(valore, elemento, contatore) {
     }
     elemento.appendChild(body);
 }
+ */
+function createCard(object) {
+    const row = document.getElementById('row-card');
+    //colonna
+    let col = document.createElement('div');
+    col.classList.add('col-4');
+    //card
+    let card = document.createElement('div');
+    card.classList.add('card');
+    //card-body
+    let card_body = document.createElement('div');
+    card_body.classList.add('card-body');
+    
+    let count = 1;
+    for (const key in object) {
 
+        switch (count) {
+            case 1:
+                //dobbiamo inserire il titolo
+                let title = document.createElement('h5');
+                title.classList.add('card-title');
+                title.innerText = object[key];
+                card_body.appendChild(title);
+                break;
+            case 2:
+                //dobbiamo inserire il sottotitolo
+                let subtitle = document.createElement('p');
+                subtitle.classList.add('card-text');
+                subtitle.innerText = object[key];
+                console.log(subtitle.innerText);
+                card_body.appendChild(subtitle);
+                break;
+            case 3:
+                //dobbimao inserire l'immagine
+                let img = `<img src="./img/${object[key]}" class="card-img-top" alt="dipendente">`;
+                card.innerHTML+= img;
+                console.log(count);
+                break;
+        
+            default:
+                break;
+        }
+        count++;
+    }
+    
+    card.appendChild(card_body);
+    col.appendChild(card);
+    row.appendChild(col);
+}
 //MILESTONE 0
 let dipendenti = [
     {
@@ -82,14 +125,7 @@ let dipendenti = [
 ];
 //MILESTONE 1 :
 for (let i = 0; i < dipendenti.length; i++) {
-    let col = crateCol();
-    let count = 1
-    for (let key in dipendenti[i]) {
-        let val = dipendenti[i][key];
-        console.log(count);
-        console.log(val);
-        printValori(val,col,count);
-        count++;
-        
-    }
+    let oggetto= dipendenti[i];
+
+    createCard(oggetto);
 }
